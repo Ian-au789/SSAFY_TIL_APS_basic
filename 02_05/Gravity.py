@@ -35,20 +35,20 @@ box_list = [7, 4, 2, 0, 0, 6, 0, 7, 0]
 
 def highest_drop(N, box_list):
     
-    max_fall = 0
+    max_fall = 0                                  # 최대 낙차 저장할 변수 
 
-    for i in range(0, len(box_list)-1):
-        count = 1  
+    for i in range(0, len(box_list)-1):           # 처음부터 마지막 2번째까지 (마지막은 비교할 대상이 없음)
+        count = 1                                 # 자기 자신은 기본 포함
 
-        for j in range(i+1, len(box_list)):     
+        for j in range(i+1, len(box_list)):       # 그 앞에 있는 나머지 상자 전부 
 
-            if box_list[i] <= box_list[j]: 
-                count += 1
+            if box_list[i] <= box_list[j]:        
+                count += 1                        # 상자의 높이가 더 높거나 같을 경우에만 낙차를 줄게함 
             
 
         fall = N-(i+count)
 
-        if max_fall < fall:
+        if max_fall < fall:                       # 최댓값 저장
             max_fall = fall
         
     return max_fall
