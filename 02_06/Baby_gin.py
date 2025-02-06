@@ -2,14 +2,15 @@
 
 # 제출용 정답
 '''
-card = int(input())
-
-
-print(f"{test_case} {Baby_gin(random_6)})
+card = input()
+~~~
+print(f"#{test_case} {Baby_gin(int(random_6))}")
 '''
 
+
+random_6 = "054060"
+
 # Greedy Method 
-random_6 = "532235"
 
 def Baby_gin(card):
     card_list = []
@@ -49,3 +50,6 @@ def Baby_gin(card):
         return False
 
 print(Baby_gin(int(random_6)))
+
+# 완전탐색
+
