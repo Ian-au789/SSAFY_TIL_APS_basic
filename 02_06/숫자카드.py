@@ -8,23 +8,7 @@ for test_case in range(1, T + 1):
 
     cards = input()
     
-    def many_cards(length, card):
-
-        card_list = []
-
-        for i in range(length):
-            card_list.append(int(card[i]))
-
-        counts = [0]*10
-
-        for number in card_list:
-            counts[number] += 1
-
-        for i in range(9, -1, -1):
-            if counts[i] == max(counts):
-                return i, max(counts)
-            
-    result = many_cards(N, cards)
+    ~~~
     
     print(f"#{test_case} {result[0]} {result[1]}")
 '''
