@@ -24,19 +24,20 @@ def flatten(max_dump, box_list):
     length = len(box_list)
 
     if sum(box_list) % length == 0:                    # 박스의 총합이 리스트 길이에 나누어 떨어지면 평탄화가 완료됐을 떄 고저차가 0
-
         flat = 0  
 
-    else :
-        flat = 1                                       # 그렇지 않으면 1 
+    else :                                             # 그렇지 않으면 1 
+        flat = 1
 
     while dumps < max_dump:                            # 덤프 횟수가 최대횟수에 도달할 때 까지 
 
+        '''
         min_box = min(box_list)                        # 가장 높은 박스와 가장 낮은 박스 갱신 
         max_box = max(box_list)
 
+
         if max_box - min_box == flat:                  # 최대 횟수에 도달하기 전에 평탄화 완료되면 중단 
-            break
+            return flat
 
         for i in range(0, length):                     # 제일 먼저 찾은 최솟값에 1 더하고 break 
             if box_list[i] == min_box:
@@ -47,13 +48,28 @@ def flatten(max_dump, box_list):
             if box_list[i] == max_box:
                 box_list[i] -= 1
                 break
+        '''                                            # max, min 함수 남발은 시간복잡도 증가 초래 
+
+        max_box, min_box = box_list[0], box_list[0]
+        max_idx, min_idx = 0, 0
+
+        for i in range(length):                        # 최대, 최소, 인덱스 동시에 반환 
+
+            if box_list[i] > max_box:
+                max_idx, max_box = i, box_list[i]
+
+            if box_list[i] < min_box:
+                min_idx, min_box = i, box_list[i]
+        
+        if max_box - min_box == flat:                  # 최대 횟수에 도달하기 전에 평탄화 완료되면 중단 
+            return flat
+
+        box_list[max_idx] -= 1
+        box_list[min_idx] += 1
 
         dumps += 1                                     # while loop 1회마다 덤프 + 1 
-        
-    if dumps < max_dump:                               # 중간에 평탄화 완료됐으면 flat 반환 
-        return flat
-    
-    else :
-        return max(box_list) - min(box_list)           # 평탄화 완료 못했을 시 최대 고저차 반환 
+
+
+    return max_box - min_box           # 평탄화 완료 못했을 시 최대 고저차 반환 
     
 print(flatten(N, boxes))

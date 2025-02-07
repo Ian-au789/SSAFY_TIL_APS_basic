@@ -1,3 +1,5 @@
+# https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZTP1QzqXnbHBIRD&contestProbId=AV5PrmyKAWEDFAUq&probBoxId=AZTP3wYKXqXHBIRD&type=PROBLEM&problemBoxTitle=%2802.07%29+List2-1&problemBoxCnt=8
+
 import sys
 sys.stdin = open("input.txt", "r")
 
