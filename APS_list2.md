@@ -133,14 +133,15 @@ ex) arr = [[0, 1, 2, 3], [4, 5, 6, 7]] (2행 4열의 2차원 배열)
 
 - 검색 대상이 많은 경우 수행시간이 급격히 증가하여 비효율적
 
+- 정렬된 상태의 자료를 검색할 시 찾는 검색 키보다 원소가 낮아지거나 높아지면 더 이상 검색할 필요가 없음
 
-    i = 0
-    while i < n and a[i] != key:
+
+    n = len(arr)
+    i = 0                             # 자료가 오름차순 정렬이 되어 있다면
+    while i < n and arr[i] != key:    # i < n 대신에 arr[i] <= key
         i += 1
 
-    if i < n : return i             # 인덱스 반환
-    else : return -1                # 검색 실패
-
-
+    if i < n : return i               # 인덱스 반환
+    else : return -1                  # 검색 실패
 
 ### 이진 검색
