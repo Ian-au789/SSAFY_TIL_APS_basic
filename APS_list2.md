@@ -1,5 +1,6 @@
 # 2차원 배열
 
+---
 : 2차원 이상의 다차원 list는 차원에 따라 index 선언
 
 ex) arr = [[0, 1, 2, 3], [4, 5, 6, 7]] (2행 4열의 2차원 배열)
@@ -40,6 +41,7 @@ ex) arr = [[0, 1, 2, 3], [4, 5, 6, 7]] (2행 4열의 2차원 배열)
  
 ## 델타 탐색
 
+---
 : 2차 배열의 한 좌표에서 4방향의 인접 배열 요소를 탐색하는 방법
 
     # arr = N*N matrix 
@@ -72,6 +74,7 @@ ex) arr = [[0, 1, 2, 3], [4, 5, 6, 7]] (2행 4열의 2차원 배열)
 
 ## 부분 집합
 
+---
 : 완전검색 기법 사용 (모든 부분집합 생성 후 탐색)
 
 **비트**를 사용해서 부분집합 표현 
@@ -119,6 +122,8 @@ ex) arr = [[0, 1, 2, 3], [4, 5, 6, 7]] (2행 4열의 2차원 배열)
     print()
     
 ## 검색
+
+---
 : 저장되어 있는 자료 중에서 원하는 항목을 찾는 작업
 
 탐색 키 : 자료를 구별하여 인식할 수 있는 키
@@ -137,11 +142,13 @@ ex) arr = [[0, 1, 2, 3], [4, 5, 6, 7]] (2행 4열의 2차원 배열)
 
 
     n = len(arr)
-    i = 0                             # 자료가 오름차순 정렬이 되어 있다면
+    i = 0   
+                                      # 자료가 오름차순 정렬이 되어 있다면
     while i < n and arr[i] != key:    # 조건문 : i < n and arr[i] <= key
         i += 1
 
     if i < n : return i               # 인덱스 반환
+
     else : return -1                  # 검색 실패
 
 ### 이진 검색
@@ -153,21 +160,54 @@ ex) arr = [[0, 1, 2, 3], [4, 5, 6, 7]] (2행 4열의 2차원 배열)
 - 목적 키를 찾을 때 까지 계속 범위를 반으로 줄여가면서 빠른 검색
 
 
-    n = len(arr)
-    start = 0
-    end = n-1
+    def binary_search(arr, key):
+        n = len(arr)
+        start = 0
+        end = n-1
     
-    while start <= end:
-        middle = (start + end)//2
+        while start <= end:
+            middle = (start + end)//2
+    
+            if arr[middle] == key:
+                return middle
+    
+            elif arr[middle] <= key:
+                start = middle + 1
+    
+            else:
+                end = middle - 1
+    
+        return -1
 
+<재귀 함수로 구현>
+
+    def binary_search(arr, key):
+        if not arr:
+            return -1
+    
+        middle = len(arr) // 2
+    
         if arr[middle] == key:
-            return middle
-
-        elif arr[middle] <= key:
-            start = middle + 1
-
+            return middle                                           # 탐색 완료
+        elif arr[middle] < key:
+            result = binary_search(arr[middle + 1:], key)           # 오른쪽 절반 탐색
+            return middle + 1 + result if result != -1 else -1      # 인덱스 값 조정 (못 찾을 시 -1 반환)
         else:
-            end = middle - 1
+            result = binary_search(arr[:middle], key)               # 왼쪽 절반 탐색
+            return result if result != -1 else -1                   # 인덱스 조정 불필요
 
-    return -1
-    
+### 선택 정렬
+
+: 주어진 자료들 중 가장 작은 값의 원소부터 차례대로 선택하여 위치를 교환하는 방식
+
+    def selection_sort(arr, N):
+        for i in range(N - 1):
+            min_idx = i
+            
+            for j in range(i+1, N):
+                if arr[min_idx] > arr[j]:
+                    min_idx = j
+            
+            arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+- 목적 키 값이 비교적 작을 때 선택 정렬을 이용해서 탐색 가능
