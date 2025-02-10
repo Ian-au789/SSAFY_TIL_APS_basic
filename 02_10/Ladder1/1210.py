@@ -23,8 +23,8 @@ def ladder(matrix):
         idx_x = number                                      # 좌표 [idx_y][idx_x] 초깃값 설정
         idx_y = 0
 
-        while idx_y < 99:
-            if 0 <= idx_x - 1 < 100:                        # 인덱스 범위 확인
+        while idx_y < 99:                                   # 99번째 행에 도착하면 종료
+            if 0 <= idx_x - 1 < 100:                        
                 if matrix[idx_y][idx_x - 1] == 1:           # 왼쪽에 사다리가 이어졌나 확인
                     idx_x -= 1
                     while matrix[idx_y + 1][idx_x] == 0:    # 아래로 내려가는 길이 나타날 때 까지 왼쪽으로 이동
@@ -32,7 +32,7 @@ def ladder(matrix):
                     idx_y += 1                              # 아래로 내려가는 길이 생기면 방향 전환 후 다시 주변 체크
                     continue
 
-            if 0 <= idx_x + 1 < 100:                        # 인덱스 범위 확인
+            if 0 <= idx_x + 1 < 100:                        
                 if matrix[idx_y][idx_x + 1] == 1:           # 오른쪽에 사다리가 이어졌나 확인
                     idx_x += 1
                     while matrix[idx_y + 1][idx_x] == 0:    # 아래로 내려가는 길이 나타날 때 까지 오른쪽으로 이동
@@ -42,7 +42,7 @@ def ladder(matrix):
 
             idx_y += 1                                      # 그 외에 계속 하강
 
-        if matrix[idx_y][idx_x] == 2:
+        if matrix[idx_y][idx_x] == 2:                       # 도착한 항목이 당첨인지 확인
             return number
 
 
