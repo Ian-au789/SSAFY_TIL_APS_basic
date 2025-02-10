@@ -138,10 +138,36 @@ ex) arr = [[0, 1, 2, 3], [4, 5, 6, 7]] (2행 4열의 2차원 배열)
 
     n = len(arr)
     i = 0                             # 자료가 오름차순 정렬이 되어 있다면
-    while i < n and arr[i] != key:    # i < n 대신에 arr[i] <= key
+    while i < n and arr[i] != key:    # 조건문 : i < n and arr[i] <= key
         i += 1
 
     if i < n : return i               # 인덱스 반환
     else : return -1                  # 검색 실패
 
 ### 이진 검색
+: 자료의 가운데에 있는 항목의 키 값과 비교하여 목표값이 중앙 원소의 값보다 작으면 왼쪽, 
+크다면 오른쪽 절반에 대해서 검색을 계속 진행하는 방법 (up&down 게임)
+
+- 조건 : 자료가 정렬된 상태여야 한다. (오름차순 or 내림차순)
+
+- 목적 키를 찾을 때 까지 계속 범위를 반으로 줄여가면서 빠른 검색
+
+
+    n = len(arr)
+    start = 0
+    end = n-1
+    
+    while start <= end:
+        middle = (start + end)//2
+
+        if arr[middle] == key:
+            return middle
+
+        elif arr[middle] <= key:
+            start = middle + 1
+
+        else:
+            end = middle - 1
+
+    return -1
+    
