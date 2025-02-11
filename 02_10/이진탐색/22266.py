@@ -3,13 +3,35 @@
 import sys
 sys.stdin = open("sample_input(1).txt", "r")
 
+# 오늘 배운 이진 탐색
+def search_game(end, key):
+    start = 1
+    middle = (end + start) // 2
+    cnt = 0
 
-def search_game(pages, page1, page2):
-    pass
+    while middle != key:
+        if key > middle:
+            start = middle
+        else:
+            end = middle
 
+        middle = (end + start) // 2
+        cnt += 1
+
+    return cnt
 
 T = int(input())
 for t in range(1, T+1):
     L, M, N = map(int, input().split())
 
-    print(f"#{t} {search_game(L, M, N)}")
+    # 횟수가 적은 쪽이 승리, 횟수가 동일하면 무승부
+    if search_game(L, M) < search_game(L, N):
+        result = "A"
+
+    elif search_game(L, M) == search_game(L, N):
+        result = 0
+
+    else :
+        result = "B"
+
+    print(f"#{t} {result}")
