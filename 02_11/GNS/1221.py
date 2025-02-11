@@ -4,12 +4,12 @@ import sys
 sys.stdin = open("input.txt", "r")
 
 
-def sort_number(numbers):
+def sort_number(length, numbers):
     sort_list = []
     order = ["ZRO", "ONE", "TWO", "THR", "FOR", "FIV", "SIX", "SVN", "EGT", "NIN"]
 
     for number in order:
-        for i in range(len(numbers)):
+        for i in range(int(length)):
             if numbers[i] == number:
                 sort_list.append(numbers[i])
 
@@ -17,8 +17,8 @@ def sort_number(numbers):
 
 
 T = int(input())
-for t in range(1, T+1):
+for t in range(1, T + 1):
     n, N = map(str, input().split())
     input_list = list(map(str, input().split()))
 
-    print(f"#{t} {sort_number(input_list)}")
+    print(f"#{t} {sort_number(N, input_list)}")
