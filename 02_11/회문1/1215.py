@@ -18,6 +18,9 @@ def palindrome(length, matrix):
                 if check == length//2:                           # 회문 확인할 때 마다 카운트
                     cnt += 1
 
+        if trial == 1:
+            break
+
         for m in range(8):
             for n in range(8):
                 if m < n:
