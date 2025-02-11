@@ -15,7 +15,7 @@ def flip_rock(rocks, matrix):
                     else:
                         rocks[row[0] - 1 - i] = 1
                         rocks[row[0] - 1 + i] = 1
-    return "".join(rocks)
+    return " ".join(map(str, rocks))
 
 
 T = int(input())
