@@ -22,5 +22,3 @@ def how_many_switch(bulbs):
 
 arr = list(input())
 print(how_many_switch(arr))
-
-
