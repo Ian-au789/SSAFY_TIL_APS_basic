@@ -18,7 +18,7 @@ def fast_type(type_str, key_str):
                     typing += 1                           # 타이핑은 한 번만
 
             else:                                         # 패턴과 일치하지 않으면
-                idx += 1
+                idx += 1                                  # 다음으로 이동
                 typing += 1
                 break
 
