@@ -12,6 +12,7 @@
 2. push : 저장소에 자료를 저장하기
 
 
+
     def push(item, size)
         global top
         top += 1
@@ -25,7 +26,9 @@
     stack = [0]*stack
     top = -1
    
+
 3. pop : 저장소에서 삽입한 자료의 역순으로 자료를 꺼낸다
+
 
 
     def pop():
@@ -36,6 +39,7 @@
         else:
             top -= 1
             return stack[top+1]
+
 
 4. isEmpty : 스택이 공백인지 아닌지를 확인
 
