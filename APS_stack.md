@@ -11,7 +11,13 @@
 
 2. push : 저장소에 자료를 저장하기
 
+3. pop : 저장소에서 삽입한 자료의 역순으로 자료를 꺼낸다
 
+4. isEmpty : 스택이 공백인지 아닌지를 확인
+
+5. peek : 스택의 top에 있는 항목을 반환하는 연산
+
+--
 
     def push(item, size)
         global top
@@ -26,11 +32,6 @@
     stack = [0]*stack
     top = -1
    
-
-3. pop : 저장소에서 삽입한 자료의 역순으로 자료를 꺼낸다
-
-
-
     def pop():
         global top
         if top == -1:
@@ -39,11 +40,6 @@
         else:
             top -= 1
             return stack[top+1]
-
-
-4. isEmpty : 스택이 공백인지 아닌지를 확인
-
-5. peek : 스택의 top에 있는 항목을 반환하는 연산
 
 <참고 사항>
 - pop, append 메서드는 사용할 수 있지만 시간이 오래 걸림 (할당에 비교해서)
