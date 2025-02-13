@@ -5,9 +5,31 @@ sys.stdin = open('bracket_input.txt')
 
 
 def check_bracket(brackets):
-    pass
+    top = -1
+    size = len(brackets)
+    stack = [0]*size
+
+    for i in range(size):
+        if brackets[i] == "(":
+            top += 1
+            if top == size:
+                return -1
+            else:
+                stack[top] = "("
+
+        elif brackets[i] == ")":
+            if top == -1:
+                return -1
+            else:
+                top -= 1
+
+    if top == -1:
+        return 1
+    else:
+        return -1
 
 
-for T in range(1, 5):
-    input_list = list(map(str, input()))
-    print(f"#{T} {check_bracket(input_list)}")
+T = int(input())
+for t in range(1, T+1):
+    input_list = list(input())
+    print(f"#{t} {check_bracket(input_list)}")
