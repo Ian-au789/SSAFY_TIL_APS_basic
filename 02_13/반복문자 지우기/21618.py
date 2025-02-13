@@ -5,7 +5,25 @@ sys.stdin = open('sample_input.txt')
 
 
 def erase_same_letter(line):
-    pass
+    top = -1
+    size = len(line)
+    stack = [0]*size
+
+    for i in range(size):
+        if stack[top] != line[i]:                   # 새로운 입력값이 직전 입력과 다르면 push
+            top += 1
+            if top == size:
+                return -1
+            else:
+                stack[top] = line[i]
+
+        else:                                      # 새로운 입력값이 직접 입력과 같으면 pull
+            if top == -1:
+                return -1
+            else:
+                top -= 1
+
+    return top + 1
 
 
 T = int(input())
