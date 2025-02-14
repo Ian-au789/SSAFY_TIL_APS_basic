@@ -72,3 +72,60 @@ ex) factorial, fibonacci
         else:
             print(arr[i])
             f(i+1, N)
+
+## Memoization
+
+: 이전에 계산한 값을 메모리에 저장해서 매번 다시 계산하지 않도록 하여 실행 속도를 향상시키는 기술
+
+recursive 방식
+
+    def fibo1(n) :
+        global cnt
+        global memo          # 전역 변수 선언안해도 리스트는 참조 가능
+        cnt += 1
+        if n >= 2 and memo[n] == 0 :
+            memo[n] = fibo1(n-1) + fibo1(n-2)
+        return memo[n]
+    
+    n = 10
+    cnt = 0                 # 호출 횟수 기록
+    memo = [0] * (n+1)
+    memo[0] = 0
+    memo[1] = 1
+    
+    print(fibo1(n), cnt)
+
+## Dynamic Programming
+
+: 압력 크기가 작은 부분 문제들을 모두 해결한 후에 그 해들을 이용하여 보다 큰 크기의 부분 문제들을 해결,
+최종적으로 원래 주어진 입력의 문제를 해결하는 알고리즘
+
+1. 문제를 부분 문제로 분할
+
+2. 가장 작은 부분 문제 해결 후 해를 테이블에 저장
+
+3. 테이블에 저장된 부분 문제의 해를 이용해 상위 문제를 해결
+
+iterative 방식
+
+    def fibo2(n) :
+        f = [0] * (n + 1)
+        f[0] = 0
+        f[1] = 1
+        for i in range(2, n + 1) :
+            f[i] = f[i-1] + f[i-2]
+    
+        return f[n]
+    
+    print(fibo2(10))
+
+- Memoization을 반복적 구조로 구현하면 좀 더 효율적
+- 재귀적 구조는 내부 시스템 호출 스택을 사용하는 오버헤드가 발생
+
+## DFS
+
+: 시작 정점의 한 방향으로 갈수 있는 경로의 마지막 지점까지 탐색, 더 이상 갈 곳이 없으면
+가장 마지막에 만난 갈림길로 돌아와서 다른 방향의 정점으로 탐색, 결국 모든 정점을 방문하는 순회 방법
+
+- 가장 마지막에 만난 갈림길의 정점으로 되돌아가기 -> LIFO 스택 사용 
+
