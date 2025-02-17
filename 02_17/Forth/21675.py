@@ -7,41 +7,38 @@ sys.stdin = open("4874_input.txt")
 def forth_calculator(formula):
     stack = [""] * len(formula)
     top = -1
-    weight = {1: ["+", "-"], 2: ["*", "/"]}
+    operator = ["+", "-", "*", "/"]
 
     for n in formula:
-        if n in weight[1]:
-            if type(stack[top]) == int and type(stack[top-1]) == int:
+        if n in operator:
+            if type(stack[top]) == int and type(stack[top-1]) == int:    # 스택에 제일 마지막에 저장된 2개 값이 정수인지 확인
+                # 각 연산자에 맞는 계산 실행하고 top -1
                 if n == "+":
-                    value = stack[top] + stack[top-1]
+                    stack[top - 1] += stack[top]
                     top -= 1
-                    stack[top] = value
-                else:
-                    value = stack[top - 1] - stack[top]
-                    top -= 1
-                    stack[top] = value
 
-            else:
+                elif n == "-":
+                    stack[top - 1] -= stack[top]
+                    top -= 1
+
+                elif n == "*":
+                    stack[top-1] *= stack[top]
+                    top -= 1
+
+                else:
+                    stack[top - 1] //= stack[top]
+                    top -= 1
+
+            else:                # 연산이 불가한 경우 에러
                 return "error"
 
         elif n == ".":
-            return stack[top]
-
-        elif n in weight[2]:
-            if type(stack[top]) == int and type(stack[top-1]) == int:
-                if n == "*":
-                    value = stack[top] * stack[top-1]
-                    top -= 1
-                    stack[top] = value
-                else:
-                    value = stack[top - 1] // stack[top]
-                    top -= 1
-                    stack[top] = value
-
-            else:
+            if top == 0:         # 모든 연산이 끝났을 때 저장된 정수를 모두 썼으므로 top = 0이어야 함
+                return stack[top]
+            else:                # 1 2 + 3 . 처럼 숫자만 주어지고 끝나는 연산도 있음 (에러)
                 return "error"
 
-        else:
+        else:                    # 숫자는 스택에 저장
             top += 1
             stack[top] = int(n)
 
