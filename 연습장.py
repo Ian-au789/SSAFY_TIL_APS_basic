@@ -1,13 +1,18 @@
-def f(i, N):
-    if i == N:
-        print(bit)
-    else:
-        bit[i] = 1
-        f(i + 1, N)
-        bit[i] = 0
-        f(i + 1, N)
+# 행렬 입력 받기
+'''
+T = int(input())
+for t in range(1, T+1):
+    N = int(input())
+    input_matrix = []
+    for _ in range(N):
+        input_list = list(map(int, input().split()))
+        input_matrix.append(input_list)
+'''
 
-
-A = [1, 2, 3]
-bit = [0] * len(A)
-f(0, 3)
+# 한 줄 입력받기
+'''
+T = int(input())
+for t in range(1, T+1):
+    N = int(input)
+    input_list = list(map(int, input().split()))
+'''
