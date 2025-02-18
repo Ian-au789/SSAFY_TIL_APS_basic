@@ -6,21 +6,22 @@ sys.stdin = open("4875_input.txt")
 
 def maze_clear(size, start, last, end):
 
-    if start == end:
+    if start == end:                                                        # 원하는 목적지에 도착하면 1 반환
         return 1
 
     else:
-        di = [1, 0, -1, 0]
+        di = [1, 0, -1, 0]                                                  # 상하좌우 델타 탐색
         dj = [0, 1, 0, -1]
         for k in range(4):
-            next_step = [start[0] + di[k], start[1] + dj[k]]
-            if next_step != last:
-                if 0 <= next_step[0] < size and 0 <= next_step[1] < size:
-                    if maze[next_step[0]][next_step[1]] == 0:
-                        return maze_clear(size, next_step, start, end)
+            next_step = [start[0] + di[k], start[1] + dj[k]]                # 다음에 이동할 곳
+            if next_step != last:                                           # 방금 전에 있던 곳 아니고
+                if 0 <= next_step[0] < size and 0 <= next_step[1] < size:   # 2차원 배열 안에 있으며
+                    if maze[next_step[0]][next_step[1]] != 1:               # 막혀 있지 않으면
+                        if maze_clear(size, next_step, start, end) == 1:    # 해당 장소에 이동하고 함수 재귀 호출
+                            return 1
 
         else:
-            return 0
+            return 0                                                        # 더 이상 이동할 곳이 없으면 0 반환
 
 
 T = int(input())
