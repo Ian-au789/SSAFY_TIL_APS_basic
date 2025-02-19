@@ -18,16 +18,34 @@ for t in range(1, T+1):
 '''
 
 
-def f(i, N):  # 크기가 N이고 순열을 저장한 p배열에서 p[i]를 결정하는 함수
-    if i == N:  #
-        print(p)
-    else:
-        for j in range(i, N):
-            p[i], p[j] = p[j], p[i]
-            f(i + 1, N)  # i+1자리 결정
-            p[i], p[j] = p[j], p[i]
+def permutation(n, k):
+    global cnt
+    numbers = [i for i in range(1, n+1)]
+    visited = [0] * n
+    idx = 0
+
+    while cnt != k:
+        perm = []
+        while idx < n:
+            for i in range(n):
+                if not visited[i]:
+                    perm.append(numbers[i])
+                    idx += 1
+                    break
+                else:
+                    continue
+
+            else:
+                out = perm.pop()
+                idx -= 1
+                visited[out] = 0
+
+        cnt += 1
+
+    return perm
 
 
-p = [1, 2, 3]
-N = 3
-f(0, N)
+
+cnt = 0
+
+
