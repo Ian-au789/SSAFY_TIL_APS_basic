@@ -13,8 +13,9 @@ def group_competition(size, rsp):
         return rsp[0]
 
     else:
-        return rock_scissor_paper(group_competition((size+1)//2, rsp[:(size+1)//2]),
-                                  group_competition(size - (size+1) // 2, rsp[(size+1)//2:]))
+        group_1 = group_competition((size+1)//2, rsp[:(size+1)//2])
+        group_2 = group_competition(size - (size+1) // 2, rsp[(size+1)//2:])
+        return rock_scissor_paper(group_1, group_2)
 
 
 # 가위바위보 승자를 정하는 함수
