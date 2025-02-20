@@ -40,6 +40,6 @@ def permutation_math(n, k):
 
 
 
-print(permutation(3, 6))  # [3, 2, 1]
-print(permutation(4, 9))  # [2, 3, 1, 4]
-print(permutation(5, 16)) # [3, 1, 5, 2, 4]
+print(permutation_math(3, 6))  # [3, 2, 1]
+print(permutation_math(4, 9))  # [2, 3, 1, 4]
+print(permutation_math(5, 16)) # [3, 1, 5, 2, 4]
