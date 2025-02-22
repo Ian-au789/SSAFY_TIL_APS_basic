@@ -1,9 +1,9 @@
-def back_to_room(rooms):
-    corridor = [0] * 201  # 복도 번호는 1~200까지 사용
+def back_to_room(matrix):
+    corridor = [0] * 200
 
-    for room in rooms:
-        start = (room[0] + 1) // 2
-        end = (room[1] + 1) // 2
+    for room in matrix:
+        start = (room[0] - 1) // 2
+        end = (room[1] - 1) // 2
 
         for i in range(start, end + 1):
             corridor[i] += 1  # 해당 복도를 이용하는 학생 증가
