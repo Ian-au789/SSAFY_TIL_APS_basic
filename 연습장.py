@@ -18,33 +18,6 @@ for t in range(1, T+1):
 '''
 
 
-def permutation(n, k):
-    global cnt
-    numbers = [i for i in range(1, n+1)]
-    visited = [0] * n
-    idx = 0
-
-    while cnt != k:
-        perm = []
-        while idx < n:
-            for i in range(n):
-                if not visited[i]:
-                    perm.append(numbers[i])
-                    idx += 1
-                    break
-                else:
-                    continue
-
-            else:
-                out = perm.pop()
-                idx -= 1
-                visited[out] = 0
-
-        cnt += 1
-
-    return perm
-
-
-
-cnt = 0
-
+l = [1, 2, 3, 4, 5]
+l.pop(2)
+print(l)
