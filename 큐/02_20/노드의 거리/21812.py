@@ -10,15 +10,18 @@ def how_many_node(start, end):
     level = [1]                                  # 각 레벨의 노드 개수 저장
     next_level = 0                               # 다음 레벨의 노드 개수 카운트
     queue = [start]                              # 큐 준비
+    visited[start] = 1
 
     while len(queue) > 0:
         for i in range(V+1):
             if matrix[queue[0]][i]:
-                if i == end:
-                    return len(level)            # 도착 노드에 도달하면 지금까지 노드 개수 반환
+                if not visited[i]:
+                    if i == end:
+                        return len(level)            # 도착 노드에 도달하면 지금까지 노드 개수 반환
 
-                queue.append(i)
-                next_level += 1
+                    queue.append(i)
+                    visited[i] = 1
+                    next_level += 1
 
         else:
             queue.pop(0)
@@ -43,5 +46,7 @@ for t in range(1, T+1):
         matrix[node2][node1] = 1
 
     S, G = map(int, input().split())
+    visited = [0]*(V+1)
+    visited[0] = 1
 
     print(f"#{t} {how_many_node(S, G)}")
