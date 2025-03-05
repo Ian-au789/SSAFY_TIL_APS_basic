@@ -13,24 +13,24 @@ for t in range(1, 11):
 
     for node in nodes:
         if len(node) == 4:
-            operators.append([int(node[0]), node[1], (int(node[2]), int(node[3]))])
+            operators.append([int(node[0]), node[1], int(node[2]), int(node[3])])
         else:
             numbers[int(node[0])] = int(node[1])
 
     idx = 0
     while len(operators) > 0:
-            if operators[idx][2][0] in numbers and operators[idx][2][1] in numbers:
+            if operators[idx][2] in numbers and operators[idx][3] in numbers:
                 if operators[idx][1] == "+":
-                    result = numbers[operators[idx][2][0]] + numbers[operators[idx][2][1]]
+                    result = numbers[operators[idx][2]] + numbers[operators[idx][3]]
 
                 elif operators[idx][1] == "-":
-                    result = numbers[operators[idx][2][0]] - numbers[operators[idx][2][1]]
+                    result = numbers[operators[idx][2]] - numbers[operators[idx][3]]
 
                 elif operators[idx][1] == "*":
-                    result = numbers[operators[idx][2][0]] * numbers[operators[idx][2][1]]
+                    result = numbers[operators[idx][2]] * numbers[operators[idx][3]]
 
                 elif operators[idx][1] == "/":
-                    result = numbers[operators[idx][2][0]] // numbers[operators[idx][2][1]]
+                    result = numbers[operators[idx][2]] // numbers[operators[idx][3]]
 
                 numbers[operators[idx][0]] = result
                 operators.pop(idx)
