@@ -21,3 +21,5 @@ for t in range(1, T+1):
 l = [1, 2, 3, 4, 5]
 l.pop(2)
 print(l)
+l.insert(2, 3)
+print(l)
