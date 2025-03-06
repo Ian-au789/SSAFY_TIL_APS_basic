@@ -6,7 +6,7 @@ sys.stdin = open("5176_input.txt")
 
 # 이진 탐색 트리의 규칙을 지키기 위해 중위 순회 방식 이용 (L < V < R)
 # 완전 이진 트리에 중위 순회 방식으로 1부터 채워넣기
-def complete_binary_tree(n):
+def complete_binary_tree(n):               # n은 노드 번호, node는 노드의 값
     global N
     global node
 
